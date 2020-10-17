@@ -1,0 +1,27 @@
+version: "3.1"
+services:
+  unturned:
+    image: zate75/unturned:latest
+    container_name: unturned
+    build: .
+    volumes:
+      - ./Servers:/home/steam/unturned/Servers
+    # environment:
+    #   - ID=user
+    #   - PASS=pass
+    #   - INSTANCE=svrname
+    ports:
+      - "27015:27015/udp"
+      - "27016:27016/udp"
+      - "27017:27017/udp"
+    restart: unless-stopped
+    
+  # mariadb:
+  #   image: mariadb:latest
+  #   volumes:
+  #     - ./data/mariadb:/var/lib/mysql
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: pass
+  #     MYSQL_DATABASE: unturned
+volumes:
+  servers:
